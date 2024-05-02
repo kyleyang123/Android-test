@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.Arrangement
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.wrapContentWidth
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,8 +62,15 @@ fun GreetingPreview() {
 
 @Composable
 fun PushButton() {
+    val context = LocalContext.current
     Button(
-        onClick = { /* Do something */ },
+        onClick = { /* Do something */
+            Toast.makeText(
+            context,
+            "Button clicked!",
+            Toast.LENGTH_SHORT
+            ).show()
+        },
         modifier = Modifier.wrapContentWidth()
     ) {
         Text("Push me")
