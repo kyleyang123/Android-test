@@ -27,6 +27,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.content.Intent
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 
 class MainActivity : ComponentActivity() {
     private lateinit var locationManager: LocationManager
@@ -45,7 +48,13 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Greeting("Android")
-                        PushButton()
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            PushButton1()
+                            PushButton2()
+                        }
                     }
                 }
             }
@@ -126,7 +135,7 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun PushButton() {
+fun PushButton1() {
     val context = LocalContext.current
     Button(
         onClick = { /* Do something */
@@ -142,3 +151,18 @@ fun PushButton() {
         Text("My location")
     }
 }
+
+
+    @Composable
+    fun PushButton2() {
+        val context = LocalContext.current
+        Button(
+            onClick = { /* Do something */
+                val intent = Intent(context, MainActivity2::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.wrapContentWidth()
+        ) {
+            Text("Page 2")
+        }
+    }
