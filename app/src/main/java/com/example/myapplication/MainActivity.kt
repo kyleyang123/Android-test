@@ -32,7 +32,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 
 class MainActivity : ComponentActivity() {
-    private lateinit var locationManager: LocationManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -60,6 +60,11 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+    }
+    private lateinit var locationManager: LocationManager
+    override fun onStart() {
+        super.onStart()
+
         // 初始化 LocationManager
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
@@ -78,6 +83,7 @@ class MainActivity : ComponentActivity() {
             startLocationUpdates()
         }
     }
+
 
     private fun startLocationUpdates() {
         // define LocationListener
